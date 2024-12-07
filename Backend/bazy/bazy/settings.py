@@ -54,12 +54,12 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware'
 ]
 
-ROOT_URLCONF = 'bazy.urls'
+ROOT_URLCONF = 'szkola_jazdy.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,9 +81,9 @@ WSGI_APPLICATION = 'bazy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'szkoła_jazdy',
-        'USER': 'root',
-        'PASSWORD': 'Ulica123456789',
+        'NAME': 'szkoła-jazdy',
+        'USER': 'szkoła-jazdy',
+        'PASSWORD': 'szkoła-jazdy',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -141,3 +141,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#AUTH_USER_MODEL = 'szkola_jazdy.Użytkownik'  # Twój niestandardowy model

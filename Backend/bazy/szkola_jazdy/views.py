@@ -4,7 +4,8 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode
-from .forms import RegistrationForm
+from .forms import RegistrationForm, LoginForm
+from django.views.generic import TemplateView
 
 def register(request):
     if request.method == 'POST':
@@ -27,7 +28,8 @@ def register(request):
             })
             send_mail(mail_subject, message, 'no-reply@yourdomain.com', [user.email])
 
-            return redirect('szkola_jazdy:login')
+            #return redirect('szkola_jazdy:login')
+            return redirect('login')
     else:
         form = RegistrationForm()
 
@@ -35,3 +37,9 @@ def register(request):
 
 def home(request):
     return render(request, 'szkola_jazdy/home.html')
+
+class LoginView(TemplateView):
+    def get(self, request):
+        form = LoginForm()
+        return render(request, 'szkola_jazdy/login.html', {'form': form})
+
