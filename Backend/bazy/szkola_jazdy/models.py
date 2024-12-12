@@ -45,10 +45,10 @@ class Użytkownik(AbstractUser):
         ('instruktor', 'Instruktor'),
     ]
 
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, default='email')
     nrTelefonu = models.CharField(max_length=15, null=True, blank=True)
-    imię = models.CharField(max_length=50)
-    nazwisko = models.CharField(max_length=50)
+    imię = models.CharField(max_length=50, default='imie')
+    nazwisko = models.CharField(max_length=50, default='nazwisko')
     data_urodzenia = models.DateField(null=True, blank=True)
     typ_użytkownika = models.CharField(max_length=10, choices=TYP_UŻYTKOWNIKA)
     godziny_wyjeżdżone = models.IntegerField(default=0)
